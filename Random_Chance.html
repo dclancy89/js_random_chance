@@ -1,0 +1,68 @@
+<html>
+	<head>
+		<script type="text/javascript">
+			"use strict";
+
+
+			function playSlots(quarters, goal){
+
+				// while there are still quarters, run loop
+				while(quarters){
+
+					// take a quarter away. It went into the slot.
+					quarters--;
+
+					//pick a winning number and a slot number
+					var winningNumber = Math.trunc((Math.random() * 100) + 1);
+					var slotNumber = Math.trunc((Math.random() * 100) + 1);
+
+					//left there in here in case you wanted to watch the slots run
+					//console.log("Winning Number: 4");
+					//console.log("Your number: " + winningNumber);
+
+
+					// check if you win!
+					if(winningNumber == slotNumber) {
+						var winnings = Math.trunc((Math.random() * 100) + 50);
+						
+						//console.log("You win! You won " + quarters + " quarters.");
+						
+						quarters += winnings;
+
+						//console.log("You now have " + quarters + " quarters.");
+
+						// check if they have a quarter goal. if they do, keep going until it's met.
+						if(typeof goal !== 'undefined' && quarters < goal) {
+							continue;
+						} else {
+							return quarters;
+						}
+						
+					} else {
+						// tells you if you lost.
+						//console.log("You lose. You have " + quarters + " quarter(s) left.");
+					}
+				}
+
+				return quarters;
+			}
+
+			var test1 = playSlots(100);
+
+			var test2 = playSlots(100,150);
+
+			console.log("Test 1 result: " + test1);
+			console.log("");
+
+			console.log("Test 2 result: " + test2);
+			
+
+
+
+		</script>
+	</head>
+
+	<body>
+		See console
+	</body>
+</html>
